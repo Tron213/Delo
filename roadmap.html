@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StepWise | Дорожная карта проекта (Git + Bootstrap)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>StepWise · Дорожная карта (Django) · Личный конструктор роадмап</title>
     <style>
         * {
             margin: 0;
@@ -11,78 +11,68 @@
             box-sizing: border-box;
         }
         body {
-            background: #f4f7fc;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
             padding: 2rem 1rem;
-            color: #1a2c3e;
+            color: #1e2a3a;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1350px;
             margin: 0 auto;
         }
-        /* хедер */
         .hero {
-            background: linear-gradient(105deg, #0b2b3b 0%, #1c4e6c 100%);
+            background: linear-gradient(135deg, #0a3b2f 0%, #1c6e4a 100%);
             border-radius: 2rem;
             padding: 2rem 2rem 1.8rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             color: white;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 0.75rem;
         }
-        .hero-badge {
-            background: #f39c12;
+        .hero h1 span {
+            background: #f4b942;
             padding: 0.2rem 1rem;
             border-radius: 60px;
             font-size: 1rem;
-            font-weight: 600;
         }
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-top: 1.5rem;
+            gap: 0.6rem;
+            margin: 1.2rem 0 0;
         }
         .tech {
-            background: #2c6e9e;
+            background: #2c7a5a;
             padding: 0.25rem 1rem;
             border-radius: 40px;
             font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .grid-days {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-            gap: 1.5rem;
-            margin: 1.8rem 0;
         }
         .week-card {
             background: white;
             border-radius: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
-            border: 1px solid #e2edf2;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            border: 1px solid #dce5ed;
             overflow: hidden;
         }
         .week-header {
-            background: #fff6e5;
+            background: #fef7e0;
             padding: 1rem 1.8rem;
-            border-bottom: 2px solid #ffdfb8;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            border-bottom: 2px solid #ffdfb0;
             align-items: baseline;
         }
         .week-num {
-            background: #1f6392;
+            background: #1c6e4a;
             color: white;
             padding: 0.2rem 1rem;
             border-radius: 40px;
@@ -91,54 +81,55 @@
         .week-title {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #1f3b4a;
         }
         .week-goal {
-            background: #f39c12;
-            color: white;
+            background: #f4b942;
             padding: 0.2rem 1rem;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
+            color: #1e2a3a;
         }
-        .day-item {
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.2rem;
+            padding: 1.8rem 1.8rem 2rem;
+        }
+        .day-card {
             background: white;
             border-radius: 1.2rem;
-            border: 1px solid #e9f0f5;
+            border: 1px solid #e6edf4;
             transition: 0.1s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
-        .day-item:hover {
-            border-color: #bfd9e8;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        .day-card:hover {
+            border-color: #bdd4e0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
         }
         .day-head {
-            background: #f8fafd;
+            background: #f9fbfd;
             padding: 0.7rem 1.2rem;
             font-weight: 800;
-            border-bottom: 1px solid #e2edf2;
+            border-bottom: 1px solid #e2e8f0;
             border-radius: 1.2rem 1.2rem 0 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         .day-num {
-            background: #f39c12;
-            color: white;
+            background: #1c6e4a;
             width: 28px;
             height: 28px;
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            color: white;
             font-size: 0.8rem;
         }
         .task-list {
             list-style: none;
             padding: 0.8rem 1rem 1rem;
-            flex: 1;
         }
         .task-list li {
             padding: 0.3rem 0 0.3rem 1.4rem;
@@ -147,129 +138,117 @@
             line-height: 1.4;
         }
         .task-list li::before {
-            content: "✓";
+            content: "✔";
             position: absolute;
             left: 0;
-            color: #f39c12;
+            color: #f4b942;
             font-weight: bold;
         }
-        .hint-text {
-            background: #eef6fc;
+        .hint {
+            background: #eef3f7;
             margin: 0.5rem 1rem 1rem;
             padding: 0.4rem 0.7rem;
-            border-radius: 14px;
+            border-radius: 12px;
             font-size: 0.7rem;
-            border-left: 3px solid #f39c12;
-            color: #1f5e7e;
+            border-left: 3px solid #f4b942;
+            color: #2c5a44;
         }
-        .footer-note {
-            margin-top: 2.8rem;
-            background: #0b2b3b;
-            color: #cde4f0;
-            border-radius: 1.8rem;
-            padding: 1.4rem 2rem;
+        .footer {
+            background: #1e2a3a;
+            color: #cbdbe6;
+            border-radius: 1.5rem;
+            padding: 1.2rem 2rem;
             text-align: center;
+            margin-top: 2rem;
         }
         @media (max-width: 700px) {
-            .grid-days {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+            .days-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="hero">
-        <h1>📌 StepWise · <span class="hero-badge">личный конструктор роадмап</span></h1>
-        <p style="margin-top: 0.8rem; opacity: 0.9;">Цель → Этапы → Задачи → Прогресс. Планируй свои цели, делись прогрессом по ссылке. <br> <strong>Git с первого дня, Bootstrap для вёрстки, реальный деплой на сервер.</strong></p>
+        <h1>📌 StepWise · <span>Django edition</span></h1>
+        <p style="margin-top: 0.6rem;">Конструктор личных роадмап: цель → этапы → задачи, прогресс, публичная ссылка.<br> <strong>Git, Bootstrap, деплой на свой сервер.</strong></p>
         <div class="tech-stack">
-            <span class="tech">Git (GitHub)</span>
-            <span class="tech">FastAPI</span>
-            <span class="tech">SQLite → PostgreSQL</span>
-            <span class="tech">JWT</span>
-            <span class="tech">Bootstrap 5</span>
-            <span class="tech">systemd</span>
-            <span class="tech">nginx + certbot</span>
-            <span class="tech">Docker (финал)</span>
+            <span class="tech">Django 5</span><span class="tech">Django REST Framework</span><span class="tech">SQLite/PostgreSQL</span>
+            <span class="tech">Bootstrap 5</span><span class="tech">Git</span><span class="tech">systemd + nginx</span><span class="tech">certbot</span>
         </div>
     </div>
 
-    <!-- ================= НЕДЕЛЯ 1 · Git + база + Bootstrap ================= -->
+    <!-- НЕДЕЛЯ 1: Django-проект, модели, админка, Bootstrap -->
     <div class="week-card">
         <div class="week-header">
-            <div>
-                <span class="week-num">НЕДЕЛЯ 1</span>
-                <div class="week-title">🔐 Git, регистрация, UI на Bootstrap</div>
-            </div>
-            <div class="week-goal">🎯 Репозиторий + работающая авторизация + адаптивный интерфейс</div>
+            <div><span class="week-num">НЕДЕЛЯ 1</span><div class="week-title">🐍 Django старт + модели + админка</div></div>
+            <div class="week-goal">🎯 Рабочий сайт с авторизацией и базовыми моделями</div>
         </div>
-        <div class="grid-days">
-            <div class="day-item green"><div class="day-head"><span class="day-num">1</span> Репозиторий и окружение</div><div class="task-list"><li>Создать репозиторий StepWise на GitHub (приватный)</li><li>git clone, создать venv, fastapi, uvicorn, sqlalchemy, python-dotenv</li><li>.gitignore (venv, .env, __pycache__)</li><li>Сделать первый коммит: "init project"</li></div><div class="hint-text">💡 Git — твой удалённый офис. Коммиты каждый день, даже мелкие.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">2</span> Модель User + регистрация</div><div class="task-list"><li>Таблица User: id, username, hashed_password</li><li>Эндпоинт POST /register (хеш пароля bcrypt)</li><li>Проверить через /docs (FastAPI автоматически)</li><li>Коммит: "user model and registration"</li></div><div class="hint-text">📘 passlib[bcrypt] — хеширование безопасно.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">3</span> JWT логин + защита</div><div class="task-list"><li>POST /login → возвращает access_token (python-jose)</li><li>Зависимость get_current_user (Header Authorization)</li><li>Тестовый эндпоинт /users/me (возвращает username)</li><li>Коммит: "jwt auth added"</li></div><div class="hint-text">🔒 SECRET_KEY в .env, срок токена 7 дней.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">4</span> Bootstrap 5 — страница входа/регистрации</div><div class="task-list"><li>Подключить Bootstrap CDN, создать шаблон login.html + register.html</li><li>Адаптивная форма (карточка, центрирование, грид)</li><li>JS отправка fetch, сохранение токена в localStorage</li><li>Коммит: "bootstrap auth UI"</li></div><div class="hint-text">🎨 Адаптив из коробки — Bootstrap решает проблему мобильных устройств.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">5</span> Модель Roadmap + API</div><div class="task-list"><li>Roadmap: id, title, description, goal_date, owner_id</li><li>POST /roadmaps, GET /roadmaps (список моих)</li><li>GET /roadmaps/{id} (проверка владельца)</li><li>Коммит: "roadmap crud start"</li></div><div class="hint-text">🗺️ goal_date — необязательно, для дедлайна цели.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">6</span> Дашборд (список роадмап) на Bootstrap</div><div class="task-list"><li>Страница /dashboard — отображение карточек роадмап</li><li>Кнопка "Создать роадмапу" (модальное окно BS5)</li><li>Загрузка списка через fetch после логина</li><li>Коммит: "dashboard with bootstrap cards"</li></div><div class="hint-text">📱 Карточки автоматически адаптируются под экран.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">7</span> Модель этапа (Stage) + базовая вёрстка</div><div class="task-list"><li>Stage: id, roadmap_id, title, order_index</li><li>API: добавление этапа, получение этапов роадмапы</li><li>Подключить страницу roadmap_editor.html (заготовка)</li><li>Коммит: "stages and editor layout"</li></div><div class="hint-text">📌 Порядок этапов важен для визуального таймлайна.</div></div>
+        <div class="days-grid">
+            <div class="day-card"><div class="day-head"><span class="day-num">1</span> Git + Django проект</div><div class="task-list"><li>Создать репозиторий StepWise на GitHub (приватный)</li><li>Установить Django, создать venv, django-admin startproject</li><li>Первый коммит: .gitignore, requirements.txt</li><li>python manage.py runserver — видим ракету</li></div><div class="hint">💡 Коммитить каждый день. Git — твой удалённый офис.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">2</span> Приложение core + первая модель User</div><div class="task-list"><li>python manage.py startapp core</li><li>Зарегистрировать в INSTALLED_APPS</li><li>Django использует встроенную модель User (пока хватит)</li><li>Настроить подключение к SQLite (по умолчанию)</li><li>Коммит: "core app added"</li></div><div class="hint">📘 Пользователи уже есть — спасибо Django.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">3</span> Аутентификация: логин, логаут, регистрация</div><div class="task-list"><li>Использовать встроенные django.contrib.auth</li><li>Создать шаблоны registration/login.html (Bootstrap)</li><li>URL для login, logout, регистрацию написать свою view</li><li>После входа редирект на /dashboard</li><li>Коммит: "auth with bootstrap"</li></div><div class="hint">🔐 Django делает авторизацию из коробки.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">4</span> Модель Roadmap (роадмапа)</div><div class="task-list"><li>В models.py: class Roadmap (title, description, goal_date, owner = ForeignKey(User))</li><li>Сделать миграции, применить</li><li>Зарегистрировать в admin.py</li><li>Создать суперпользователя, проверить в админке</li><li>Коммит: "roadmap model"</li></div><div class="hint">🗺️ goal_date — необязательно, для дедлайна цели.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">5</span> Модель Stage (этап) и Task (задача)</div><div class="task-list"><li>Stage: roadmap (ForeignKey), title, order</li><li>Task: stage (ForeignKey), text, completed (bool), order</li><li>Миграции, регистрация в админке</li><li>Коммит: "stage and task models"</li></div><div class="hint">📌 order — чтобы сортировать этапы и задачи.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">6</span> Дашборд (список роадмап) + Bootstrap карточки</div><div class="task-list"><li>View dashboard: list of user's roadmaps</li><li>Шаблон с Bootstrap grid, карточки роадмап</li><li>Кнопка "Создать роадмапу" (форма на отдельной странице)</li><li>URL /dashboard, защита login_required</li><li>Коммит: "dashboard UI"</li></div><div class="hint">🎨 Адаптив из коробки благодаря Bootstrap.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">7</span> Создание / редактирование роадмапы (CBV или FBV)</div><div class="task-list"><li>CreateView / UpdateView для Roadmap</li><li>Форма с полями title, description, goal_date</li><li>После сохранения — редирект на страницу редактирования этапов/задач</li><li>Коммит: "roadmap CRUD ready"</li></div><div class="hint">✏️ Используем Django формы — быстро и безопасно.</div></div>
         </div>
     </div>
 
-    <!-- НЕДЕЛЯ 2 → задачи, прогресс, полный CRUD -->
+    <!-- НЕДЕЛЯ 2: Редактор этапов и задач, прогресс -->
     <div class="week-card">
         <div class="week-header">
-            <div><span class="week-num">НЕДЕЛЯ 2</span><div class="week-title">✅ Задачи, чекбоксы, прогресс-бары</div></div>
-            <div class="week-goal">🎯 Полноценный редактор с отслеживанием выполнения</div>
+            <div><span class="week-num">НЕДЕЛЯ 2</span><div class="week-title">✅ Редактор роадмапы, чекбоксы, прогресс</div></div>
+            <div class="week-goal">🎯 Полностью рабочий редактор с визуализацией прогресса</div>
         </div>
-        <div class="grid-days">
-            <div class="day-item"><div class="day-head"><span class="day-num">8</span> Модель Task + API</div><div class="task-list"><li>Task: id, stage_id, text, completed (bool), order_index</li><li>POST /tasks, GET /stages/{id}/tasks, PATCH /tasks/{id} (toggle completed)</li><li>DELETE /tasks/{id}</li><li>Коммит: "tasks api"</li></div><div class="hint-text">✍️ completed по умолчанию false.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">9</span> Страница редактора: рендер этапов и задач</div><div class="task-list"><li>Загружаем роадмапу → этапы → задачи (группировка по stage)</li><li>Bootstrap аккордеон или карточки этапов</li><li>Для каждого этапа отображаем список задач с чекбоксом</li><li>Коммит: "render stages & tasks"</li></div><div class="hint-text">🎯 Чекбокс меняет completed через PATCH без перезагрузки.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">10</span> Прогресс этапа и общий прогресс</div><div class="task-list"><li>При загрузке считаем % выполнения по каждому этапу</li><li>Добавить прогресс-бар Bootstrap (width = %)</li><li>Общий прогресс всей роадмапы (все задачи / все задачи)</li><li>Коммит: "progress bars"</li></div><div class="hint-text">📊 Визуализация мотивирует.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">11</span> Редактирование inline (названия этапов, задач)</div><div class="task-list"><li>Кнопка "ред." у этапа → модальное окно (Bootstrap) изменение title</li><li>У задач: редактирование текста через иконку карандаша</li><li>Обновление через соответствующие PUT-запросы</li><li>Коммит: "inline editing"</li></div><div class="hint-text">✏️ UX без перегрузки страницы.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">12</span> Добавление / удаление этапов и задач</div><div class="task-list"><li>Кнопка "+ Этап" — создание нового этапа (ввод названия)</li><li>Кнопка "+ задача" под этапом</li><li>Удаление этапа → удаляются все задачи (каскад в БД)</li><li>Коммит: "add/delete items"</li></div><div class="hint-text">🧹 Подтверждение удаления — через confirm.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">13</span> Сортировка этапов и задач (Drag & drop простой)</div><div class="task-list"><li>Использовать SortableJS (легкая либа) для изменения order_index</li><li>После изменения порядка → отправить batch update или отдельно PUT stages</li><li>То же для задач внутри этапа</li><li>Коммит: "reorder with sortablejs"</li></div><div class="hint-text">🔄 Меняй план мышкой.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">14</span> Полировка + проверка прав доступа</div><div class="task-list"><li>Убедиться, что чужая роадмапа не редактируется (403)</li><li>Добавить тост-уведомления (Bootstrap Toasts)</li><li>Пуш в GitHub (регулярные коммиты за неделю)</li><li>Коммит: "week2 done — full editor"</li></div><div class="hint-text">🚀 Теперь редактор полностью рабочий.</div></div>
+        <div class="days-grid">
+            <div class="day-card"><div class="day-head"><span class="day-num">8</span> Страница одной роадмапы (детали + этапы)</div><div class="task-list"><li>View roadmap_detail — отображает заголовок, описание</li><li>Ниже — список этапов (пока без задач)</li><li>Добавить кнопки "Добавить этап", "Редактировать этап", "Удалить этап"</li><li>Коммит: "stages list on detail page"</li></div><div class="hint">📄 Простой вывод через цикл в шаблоне.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">9</span> Ajax: добавление / удаление этапов (без перезагрузки)</div><div class="task-list"><li>Написать view для создания этапа (принимает title, roadmap_id)</li><li>JS fetch отправляет POST, обновляет список этапов на странице</li><li>То же для удаления</li><li>Коммит: "stages via fetch"</li></div><div class="hint">🧠 Учимся работать с JSON и обновлять DOM.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">10</span> Задачи под этапами + чекбоксы (completed)</div><div class="task-list"><li>Отображать задачи под каждым этапом</li><li>Чекбокс, который через PATCH (или отдельную view) меняет completed</li><li>При клике на чекбокс — отправка fetch, обновление состояния</li><li>Коммит: "tasks with checkboxes"</li></div><div class="hint">✅ После изменения — пересчитываем прогресс.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">11</span> Прогресс-бары (Bootstrap)</div><div class="task-list"><li>Для каждого этапа: процент выполненных задач</li><li>Общий прогресс всей роадмапы (всего задач / выполненных)</li><li>Отображать прогресс-баром и текстом</li><li>Обновлять прогресс при каждом изменении чекбокса</li><li>Коммит: "progress bars dynamic"</li></div><div class="hint">📊 Визуализация — главная фишка.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">12</span> Добавление / редактирование задач на странице</div><div class="task-list"><li>Кнопка "+ задача" под этапом (модальное окно BS)</li><li>Редактирование текста задачи (иконка карандаша)</li><li>Удаление задачи</li><li>Коммит: "task CRUD frontend"</li></div><div class="hint">✏️ Учимся работать с модалками и формами.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">13</span> Сортировка этапов и задач (Drag & Drop)</div><div class="task-list"><li>Подключить SortableJS</li><li>При изменении порядка — отправлять новые order на сервер</li><li>Создать API-вью для обновления порядка (принимает список id)</li><li>Коммит: "reorder with sortable"</li></div><div class="hint">🔄 Меняй план мышкой — крутая фича.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">14</span> Завершение недели: полировка, проверка прав</div><div class="task-list"><li>Убедиться, что редактировать роадмапу может только владелец</li><li>Добавить сообщения об успехе (toast)</li><li>Проверить на мобильном через Bootstrap</li><li>Коммит: "week2 full editor ready"</li></div><div class="hint">🚀 Редактор полностью рабочий!</div></div>
         </div>
     </div>
 
-    <!-- НЕДЕЛЯ 3 · Публичный доступ + деплой на сервер -->
+    <!-- НЕДЕЛЯ 3: Публичный доступ и деплой на сервер -->
     <div class="week-card">
         <div class="week-header">
-            <div><span class="week-num">НЕДЕЛЯ 3</span><div class="week-title">🌍 Шеринг, VPS, nginx, HTTPS</div></div>
-            <div class="week-goal">🎯 Публичная read-only ссылка + сервер в продакшене</div>
+            <div><span class="week-num">НЕДЕЛЯ 3</span><div class="week-title">🌍 Шеринг, серверная настройка, HTTPS</div></div>
+            <div class="week-goal">🎯 Read-only ссылка + сайт доступен по домену</div>
         </div>
-        <div class="grid-days">
-            <div class="day-item"><div class="day-head"><span class="day-num">15</span> Модель ShareToken + генерация ссылки</div><div class="task-list"><li>ShareToken: id, roadmap_id, token (uuid4), created_at</li><li>POST /roadmaps/{id}/share → возвращает /public/{token}</li><li>DELETE /share/{token} — отозвать ссылку</li><li>Коммит: "share tokens"</li></div><div class="hint-text">🔗 Токен уникальный, нельзя подобрать.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">16</span> Публичная страница (view-only)</div><div class="task-list"><li>Эндпоинт GET /public/{token} отдаёт HTML</li><li>Рендер этапов и задач ТОЛЬКО для чтения (без чекбоксов, без кнопок удаления)</li><li>Показывать прогресс-бары, но заблокировать изменение</li><li>Коммит: "public readonly view"</li></div><div class="hint-text">👀 Друзья видят твой прогресс, но не могут менять.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">17</span> UI: кнопка "Поделиться" + QR</div><div class="task-list"><li>В редакторе кнопка "Поделиться" — показывает модалку со ссылкой</li><li>Генерация QR-кода (qrcode.js) прямо на странице</li><li>Кнопка копирования ссылки в буфер</li><li>Коммит: "share modal + qr"</li></div><div class="hint-text">📱 Друг сканирует телефоном → видит план.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">18</span> Подготовка к деплою: .env, requirements, wsgi</div><div class="task-list"><li>Обновить .env.example, проверить SECRET_KEY, DATABASE_URL</li><li>Заморозить requirements.txt (pip freeze)</li><li>Настроить запуск через uvicorn production (workers)</li><li>Коммит: "ready for deploy"</li></div><div class="hint-text">⚙️ DATABASE_URL переключить на PostgreSQL (опционально).</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">19</span> Деплой на VPS: systemd</div><div class="task-list"><li>Загрузить код на сервер (git pull или rsync)</li><li>Установить зависимости, создать .env</li><li>Написать юнит /etc/systemd/system/stepwise.service</li><li>Запустить, проверить journalctl</li><li>Коммит: "deploy systemd"</li></div><div class="hint-text">🐧 Сервис живёт даже после выхода из SSH.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">20</span> nginx reverse proxy + статика</div><div class="task-list"><li>Установить nginx, настроить server блок proxy_pass на 127.0.0.1:8000</li><li>Отдать статические файлы через nginx (если есть)</li><li>Проверить доступ без порта 8000</li><li>Коммит: "nginx config"</li></div><div class="hint-text">🌍 Твой сайт доступен на 80 порту по IP.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">21</span> SSL (certbot) + автообновление</div><div class="task-list"><li>Установить certbot, получить сертификат для домена</li><li>Настроить автоматическое обновление (systemd timer)</li><li>Проверить публичную ссылку через HTTPS</li><li>Коммит: "ssl https final"</li></div><div class="hint-text">🔒 Безопасно и современно.</div></div>
+        <div class="days-grid">
+            <div class="day-card"><div class="day-head"><span class="day-num">15</span> Модель ShareToken и генерация ссылки</div><div class="task-list"><li>Модель: roadmap (FK), token (uuid), created_at</li><li>В админке роадмапы кнопка "Сгенерировать ссылку"</li><li>View /share/<token> — отдаёт read-only версию роадмапы</li><li>Коммит: "share token model"</li></div><div class="hint">🔗 Токен уникальный, невозможно подобрать.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">16</span> Публичная страница (read-only)</div><div class="task-list"><li>Создать шаблон public_roadmap.html</li><li>Отображает этапы и задачи, но без кнопок редактирования и чекбоксов</li><li>Прогресс-бары видны, но неактивны</li><li>Коммит: "public view only"</li></div><div class="hint">👀 Друзья видят план, но не могут менять.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">17</span> Кнопка "Поделиться" + QR-код</div><div class="task-list"><li>В редакторе роадмапы кнопка "Поделиться"</li><li>Модальное окно со ссылкой и QR-кодом (библиотека QRCode.js)</li><li>Кнопка копирования ссылки</li><li>Коммит: "share modal + qr"</li></div><div class="hint">📱 Удобно делиться в мессенджерах.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">18</span> Подготовка к деплою: настройки .env, статика</div><div class="task-list"><li>Установить python-decouple или django-environ</li><li>SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASE_URL в .env</li><li>Собрать статику: python manage.py collectstatic</li><li>Коммит: "env and static ready"</li></div><div class="hint">⚙️ Переменные окружения — безопасность.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">19</span> Деплой на сервер: git pull + gunicorn + systemd</div><div class="task-list"><li>Загрузить код на VPS (git clone)</li><li>Установить зависимости, настроить .env, миграции</li><li>Запустить через gunicorn (тестово)</li><li>Создать systemd service для gunicorn</li><li>Коммит: "deploy systemd"</li></div><div class="hint">🐧 Сервис запускается автоматически.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">20</span> nginx reverse proxy + статика</div><div class="task-list"><li>Установить nginx, настроить server блок</li><li>Проксировать на сокет gunicorn (или порт)</li><li>Отдавать статические файлы через nginx</li><li>Проверить работу без порта 8000</li><li>Коммит: "nginx config"</li></div><div class="hint">🌍 Сайт доступен по IP / домену.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">21</span> SSL (Let's Encrypt) + автоматическое обновление</div><div class="task-list"><li>Установить certbot, получить сертификат для домена</li><li>Настроить автообновление (systemd timer)</li><li>Проверить HTTPS</li><li>Коммит: "https final"</li></div><div class="hint">🔒 Защищённое соединение обязательно для современного сайта.</div></div>
         </div>
     </div>
 
-    <!-- НЕДЕЛЯ 4 · Бонусы, автотесты, финал -->
+    <!-- НЕДЕЛЯ 4: Бонусы, тесты, Docker, релиз -->
     <div class="week-card">
         <div class="week-header">
-            <div><span class="week-num">НЕДЕЛЯ 4</span><div class="week-title">✨ Экспорт, тесты, GitHub Actions, Docker</div></div>
-            <div class="week-goal">🎯 Релиз v1.0 + профессиональная обёртка</div>
+            <div><span class="week-num">НЕДЕЛЯ 4</span><div class="week-title">✨ Экспорт, автотесты, GitHub Actions, Docker</div></div>
+            <div class="week-goal">🎯 Релиз v1.0 с профессиональной обвязкой</div>
         </div>
-        <div class="grid-days">
-            <div class="day-item"><div class="day-head"><span class="day-num">22</span> Экспорт в JSON / импорт</div><div class="task-list"><li>GET /roadmaps/{id}/export → скачивание JSON</li><li>Импорт: загрузка файла → создание копии роадмапы</li><li>Коммит: "import/export"</li></div><div class="hint-text">💾 Резервное копирование и перенос.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">23</span> Глобальный поиск по моим роадмапам</div><div class="task-list"><li>Строка поиска на дашборде (фильтр по title)</li><li>Реализовать через query параметр + поиск на сервере или на фронте</li><li>Коммит: "search roadmaps"</li></div><div class="hint-text">🔍 Быстрый доступ к нужной карте.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">24</span> Автотесты pytest (API)</div><div class="task-list"><li>Написать тесты: регистрация/логин, создание роадмапы, CRUD этапов/задач</li><li>Тест публичного доступа (readonly)</li><li>Запуск pytest — зелёный</li><li>Коммит: "tests added"</li></div><div class="hint-text">🧪 Основа для CI/CD.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">25</span> GitHub Actions CI</div><div class="task-list"><li>Создать .github/workflows/ci.yml</li><li>Автоматический запуск тестов при push / pull request</li><li>Добавить бейдж "tests passing" в README</li><li>Коммит: "github actions"</li></div><div class="hint-text">🔄 Профессиональный пайплайн.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">26</span> Docker + Docker Compose</div><div class="task-list"><li>Написать Dockerfile (python:3.11-slim)</li><li>docker-compose.yml: app + nginx + postgres (опционально)</li><li>Проверить локально подъём контейнеров</li><li>Коммит: "dockerization"</li></div><div class="hint-text">🐳 Готов к облачным платформам.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">27</span> README.md +++ скриншоты, демо</div><div class="task-list"><li>Красивое описание, установка через docker и вручную</li><li>Скриншоты дашборда, редактора, публичной страницы</li><li>Ссылка на работающий сервер (https://твой-домен)</li><li>Коммит: "final readme"</li></div><div class="hint-text">📄 Портфолио готово к показу.</div></div>
-            <div class="day-item"><div class="day-head"><span class="day-num">28</span> Релиз v1.0 и публикация</div><div class="task-list"><li>Сделать репозиторий публичным (если был приватный)</li><li>git tag v1.0, слить в main</li><li>Написать пост в LinkedIn / Telegram об успешном проекте</li><li>Запланировать фичи 1.1 (напоминания, цвета)</li></div><div class="hint-text">🏆 Ты Junior+ с реальным продуктом на GitHub!</div></div>
+        <div class="days-grid">
+            <div class="day-card"><div class="day-head"><span class="day-num">22</span> Экспорт роадмапы в JSON</div><div class="task-list"><li>View, которая возвращает JSON (roadmap + stages + tasks)</li><li>Кнопка "Скачать JSON" на странице роадмапы</li><li>Импорт: загрузка JSON и создание копии</li><li>Коммит: "export import"</li></div><div class="hint">💾 Резервное копирование.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">23</span> Поиск по моим роадмапам</div><div class="task-list"><li>Строка поиска на дашборде (фильтр по title)</li><li>Использовать Q объекты в view</li><li>Обновление списка через fetch (или просто submit формы)</li><li>Коммит: "search roadmaps"</li></div><div class="hint">🔍 Быстрый доступ.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">24</span> Автотесты (pytest-django)</div><div class="task-list"><li>Установить pytest, pytest-django</li><li>Написать тесты: регистрация, создание роадмапы, этапа, задачи</li><li>Тест публичной ссылки (доступ без логина)</li><li>Запуск pytest — зелёный</li><li>Коммит: "tests added"</li></div><div class="hint">🧪 Основа CI/CD.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">25</span> GitHub Actions CI</div><div class="task-list"><li>Создать .github/workflows/ci.yml</li><li>При каждом push: установка зависимостей, тесты, линтер</li><li>Бейджик "tests passing" в README</li><li>Коммит: "github actions"</li></div><div class="hint">🔄 Профессиональный пайплайн.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">26</span> Docker + Docker Compose</div><div class="task-list"><li>Написать Dockerfile (python:3.11-slim)</li><li>docker-compose.yml: web, db (postgres), nginx</li><li>Смонтировать статику, медиа</li><li>Проверить локально docker-compose up</li><li>Коммит: "dockerized"</li></div><div class="hint">🐳 Готов к любым облачным серверам.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">27</span> README, скриншоты, демо-ссылка</div><div class="task-list"><li>Полноценный README: установка, переменные, запуск через docker и вручную</li><li>Скриншоты дашборда, редактора, публичной страницы</li><li>Ссылка на работающий сайт (твой домен)</li><li>Коммит: "final readme"</li></div><div class="hint">📄 Портфолио готово.</div></div>
+            <div class="day-card"><div class="day-head"><span class="day-num">28</span> Релиз v1.0 и публикация</div><div class="task-list"><li>Сделать репозиторий публичным (если был приватный)</li><li>git tag v1.0</li><li>Написать пост в LinkedIn / Telegram о проекте</li><li>Запланировать следующую фичу</li></div><div class="hint">🏆 Ты Junior+ backend с живым продуктом!</div></div>
         </div>
     </div>
-    <div class="footer-note">
-        ⚡ <strong>Git — с первого дня, Bootstrap — сразу адаптив, деплой — на твой сервер</strong><br>
-        📅 28 дней (2 часа в день, график 2/2). Каждый день — маленький коммит, зелёная гистограмма горит. У тебя всё получится!
+
+    <div class="footer">
+        ⚡ <strong>Правила:</strong> Git с первого дня, коммиты каждый день, Bootstrap для адаптива. Django — твой надёжный фреймворк. <br>
+        🧠 Вопросы или затыки — спрашивай, я даю направление, а не код. Вперёд!
     </div>
 </div>
 </body>
