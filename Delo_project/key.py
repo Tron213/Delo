@@ -1,0 +1,1 @@
+KEY = 'django-insecure-ljz=p5ndb2$xwbkd^f^njuqou3*a&n%2+&tl4k&o$j!j61crkg'
