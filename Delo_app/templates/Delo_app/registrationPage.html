@@ -1,44 +1,186 @@
 {% extends "base.html" %}
 
-{% block content %}   
-<div class="container">
-        <div class="row">
-            <div class="col-4 loginFORMS">
-                 <h1>
-                    РЕГИСТРАЦИЯ
-                </h1>
-                <hr>
-                <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-danger">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-</svg> Зарегестрирываться</button>
-</form>
-            </div>
+{% block content %}
+<div class="registration-wrapper">
+    <div class="glass-card">
+        <div class="logo-mini">
+            Дел<span>О</span><i class="fas fa-heart"></i>
         </div>
-        <p class="regOrLog"><a href="/loginPage">login</a>/registration</p>
-    </div>   
+        <h2>Регистрация</h2>
+        <div class="sub">Создайте аккаунт, чтобы начать</div>
 
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-user-plus"></i> Зарегистрироваться
+            </button>
+        </form>
 
-
+        <div class="footer-links">
+            Уже есть аккаунт? <a href="/loginPage">Войти</a>
+        </div>
+        <div class="demo-hint">
+            <i class="fas fa-info-circle"></i> Регистрируясь, вы принимаете условия использования
+        </div>
+    </div>
+</div>
 
 <style>
-    .loginFORMS{
-        border: solid 1px red;
-        border-radius: 5px;
-        padding-bottom: 2vh;
-        margin-top: 33vh;
-        margin-left: 47vh;
-        padding-top: 1vh;
-        box-shadow: 4px 4px 0px 0px rgb(255, 238, 0);
+    /* ===== полный переезд в стиль ДелО ===== */
+    .registration-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 120px);  /* учитывает шапку из base.html */
+        padding: 2rem 1rem;
     }
-     .regOrLog{
-        margin-left: 47vh;
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        border-radius: 42px;
+        padding: 2rem 2rem;
+        width: 100%;
+        max-width: 480px;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        transition: transform 0.2s, box-shadow 0.2s;
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 40px -14px rgba(0, 0, 0, 0.12);
+        border-color: rgba(44, 98, 128, 0.2);
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-mini {
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        letter-spacing: -0.3px;
+        margin-bottom: 1.2rem;
+        color: #1e3b4f;
+    }
+    .logo-mini span { color: #2c6280; }
+    .logo-mini i {
+        font-size: 1rem;
+        color: #ff2e6c;
+        opacity: 0.7;
+        margin-left: 4px;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
+        color: #1e2a3a;
+    }
+    .sub {
+        color: #5b6e8c;
+        font-size: 0.85rem;
+        margin-bottom: 1.6rem;
+    }
+
+    /* стилизация полей формы (совместимость с {{ form.as_p }}) */
+    .glass-card form p {
+        margin-bottom: 1rem;
+    }
+    .glass-card label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #5b6e8c;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+    .glass-card input {
+        width: 100%;
+        border: 1px solid #e2e8f0;
+        border-radius: 28px;
+        padding: 0.75rem 1.2rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: 0.2s;
+        background: white;
+    }
+    .glass-card input:focus {
+        outline: none;
+        border-color: #2c6280;
+        box-shadow: 0 0 0 2px rgba(44, 98, 128, 0.1);
+    }
+    /* help_text и errorlist — аккуратно */
+    .glass-card .helptext {
+        font-size: 0.65rem;
+        color: #8b9bb0;
+        display: block;
+        margin-top: 0.2rem;
+    }
+    .glass-card .errorlist {
+        color: #ff2e6c;
+        font-size: 0.7rem;
+        list-style: none;
+        margin-bottom: 0.2rem;
+        padding-left: 0;
+    }
+
+    .btn-primary {
+        background: #2c6280;
+        border: none;
+        border-radius: 40px;
+        padding: 0.8rem;
+        font-weight: 600;
+        color: white;
+        font-size: 0.95rem;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .btn-primary:hover {
+        background: #1e4b64;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px rgba(44, 98, 128, 0.15);
+    }
+
+    .footer-links {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    .footer-links a {
+        color: #2c6280;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: 0.2s;
+    }
+    .footer-links a:hover {
+        border-bottom-color: #ff2e6c;
+        color: #ff2e6c;
+    }
+
+    .demo-hint {
+        font-size: 0.7rem;
+        color: #8b9bb0;
+        text-align: center;
+        margin-top: 1.2rem;
+        padding-top: 0.8rem;
+        border-top: 1px solid #edf2f7;
     }
 </style>
 
-
+<!-- подключаем FontAwesome, если base.html его не имеет (опционально) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 {% endblock %}

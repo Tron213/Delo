@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Persons
+from .models import *
 
 admin.site.register(Persons)
+admin.site.register(Roadmaps)
