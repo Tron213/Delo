@@ -44,7 +44,7 @@ def registrationPage(request):
             # from django.contrib.auth import login
             # login(request, user)
             # Перенаправляем на другую страницу, например, 'success' или 'login'
-            return redirect('/home')   # Имя маршрута зададим ниже
+            return redirect('/loginPage')   # Имя маршрута зададим ниже
     else:
         form = RegisterForm()
     return render(request, "Delo_app/registrationPage.html", {'form': form})
