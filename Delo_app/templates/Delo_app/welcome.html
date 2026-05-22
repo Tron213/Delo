@@ -1,53 +1,6 @@
-{% extends "base.html" %}
+{% extends "logoutHead.html" %}
 
 {% block content %}
-    <div class="container headBar">
-        <div class="row">
-            <div class="col-1 logo">
-                <h6>LogO</h6>
-            </div>
-        <div class="col-10 login text-end">
-            <a href="{% url 'loginPage' %}">Вход</a>
-        </div>
-        </div>
-    </div>
-
-
-<style>
-.headBar {
-    background-color: #000000;
-    height: 5vh;          /* высота шапки сохраняется */
-    min-width: 100%;
-    color: aliceblue;
-    
-    /* Добавляем Flex */
-    display: flex;
-    align-items: center;      /* вертикальное центрирование всех колонок */
-}
-
-.row {
-    /* Убираем inline-block и лишние стили */
-    display: flex;
-    justify-content: space-between;  /* разводим лого и вход по краям */
-    align-items: center;              /* дополнительная страховка по вертикали */
-    width: 100%;                      /* чтобы row растянулся на всю ширину */
-    margin: 0;                        /* убираем стандартные отступы Bootstrap */
-}
-
-.logo {
-    /* Ничего особого, но можно убрать лишние отступы */
-}
-
-.login {
-    /* Выравнивание текста вправо — не обязательно, 
-       т.к. justify-content: space-between уже разводит */
-    text-align: right;
-}
-
-/* Убираем margin у h6, чтобы не нарушать выравнивание */
-.logo h6, .login h6 {
-    margin: 0;
-    line-height: 1;
-}
-</style>
+    {{ block.super }}
+    <!-- свой дополнительный контент -->
 {% endblock %}

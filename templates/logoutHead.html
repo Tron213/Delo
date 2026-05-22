@@ -1,0 +1,24 @@
+{% extends "Base.html" %}
+
+{% block content %}
+<header style="background: rgba(248,250,255,0.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.8); position: sticky; top: 0; z-index: 100;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 0.8rem 1rem; flex-wrap: wrap;">
+        <a href="/" class="logo">ДелО</a>
+
+        <nav style="display: flex; gap: 1.8rem;">
+            <a href="#" style="text-decoration: none; font-weight: 500; transition: 0.2s;">Роудмапы</a>
+            <a href="#" style="text-decoration: none; font-weight: 500; transition: 0.2s;">Этапы</a>
+            <a href="#" style="text-decoration: none; font-weight: 500; transition: 0.2s;">Задачи</a>
+            <a href="#" style="text-decoration: none; font-weight: 500; transition: 0.2s;">Подзадачи</a>
+        </nav>
+
+        <div style="display: flex; gap: 0.8rem;">
+         <a href="{% url 'loginPage' %}"> <button class="btn-outline">Войти</button></a>  
+       <a href="{% url 'registrationPage' %}">     <button class="btn-pink">Начать</button></a>
+        </div>
+    </div>
+</header>
+<style>
+    
+</style>
+{% endblock %}

@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, loginForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import *
 
 
 def index(request):
@@ -52,7 +53,14 @@ def registrationPage(request):
 
 @login_required
 def homePage(request):
-    return render(request, "Delo_app/homePage.html")
+    username = request.user.username
+    roadmaps = Roadmaps.objects.filter()
+    context = {
+            'username': username,   
+            'roadmaps': roadmaps,        
+        }
+
+    return render(request, "Delo_app/homePage.html", context)
 
 def custom_logout(request):
     logout(request)
