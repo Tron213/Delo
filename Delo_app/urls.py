@@ -10,5 +10,7 @@ urlpatterns = [
     path("loginPage/", views.loginPage, name="loginPage"),
     path("home/", views.homePage, name="homePage"),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path("home/", views.homePage, name="homePage"),
+    path('roadmap/<int:index>/', views.Roadmap, name='Roadmap'),
 
 ]

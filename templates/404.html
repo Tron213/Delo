@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — ДелО | страница не найдена</title>
+    <link rel="stylesheet" href="../static/css/delo-ui.css">
+    <style>
+        /* Только позиционирование — без перебивания стилей системы */
+        .error-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .error-container {
+            max-width: 520px;
+            width: 100%;
+        }
+        /* Крупный номер 404 — строго, без градиентов */
+        .error-number {
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        /* Микро-розовый элемент — только полоска и едва заметный акцент */
+        .micro-pink {
+            width: 40px;
+            height: 2px;
+            background: var(--color-accent-pink);
+            margin: 1rem 0 1.25rem 0;
+        }
+        .pink-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent-pink);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="error-layout">
+    <div class="error-container">
+        <div class="glass-card" style="text-align: left; padding: 2rem;">
+            <!-- 404 без украшательств -->
+            <div class="error-number">404</div>
+            <!-- Микро-розовая линия — это и есть панк-рок деталь -->
+            <div class="micro-pink"></div>
+            
+            <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0 0 0.5rem 0;">Страница не найдена</h2>
+            <p class="text-secondary" style="margin-bottom: 1.5rem;">
+                Возможно, ссылка устарела или адрес изменился. Вернитесь на главную — 
+                там всё на своих местах.
+            </p>
+            
+            <!-- Кнопки строго из вашей системы -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="/" class="btn-primary" style="text-decoration: none;">← На главную</a>
+                <a href="#" class="btn-outline" style="text-decoration: none;">Архив дел</a>
+            </div>
+            
+            <!-- Микро-розовый акцент: точка + ссылка с розовым ховером (только ховер) -->
+            <div class="flex" style="gap: 0.25rem; align-items: center;">
+                <span class="pink-dot"></span>
+                <span class="text-muted" style="font-size: 0.85rem;">или </span>
+                <a href="#" class="pink-hover-link" style="text-decoration: none; font-size: 0.85rem;">напишите в поддержку</a>
+            </div>
+        </div>
+        <!-- Нижняя строка — минималистично -->
+        <div class="text-center mt-2">
+            <span class="text-muted" style="font-size: 0.7rem;">ДелО UI · серо-голубой · розовый акцент 5%</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

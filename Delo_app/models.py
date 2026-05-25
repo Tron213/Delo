@@ -12,10 +12,10 @@ class Roadmaps(models.Model):
     User = models.ForeignKey(settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE)
     Title = models.CharField(max_length=35)
-    Description = models.CharField(max_length=200)
-    goald_date = models.DateField()
+    Description = models.CharField(max_length=200, null=True)
+    goald_date = models.DateField(null=True)
     class Meta:
-        ordering =['User']
+        ordering =['User','-id']
     def __str__(self):
             return str(f"{self.Title}  id: {self.User.id}  пользователь: {self.User}")
 

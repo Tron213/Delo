@@ -1,7 +1,10 @@
 {% extends "Base.html" %}
 
 {% block content %}
-<header style="background: rgba(248,250,255,0.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.8); position: sticky; top: 0; z-index: 100;">
+<div class="container Head">
+    <div class="row">
+        <div class="col-12">
+
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 0.8rem 1rem; flex-wrap: wrap;">
         <a href="{% url 'homePage' %}" class="logo">ДелО</a>
 
@@ -16,8 +19,18 @@
 </form>
         </div>
     </div>
-</header>
+
+<hr>
+
+        </div>
+    </div>
+</div>
+
+
 <style>
-    
+.Head{
+    margin-top: 2vh;
+}
+
 </style>
 {% endblock %}

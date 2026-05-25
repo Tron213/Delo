@@ -1,7 +1,136 @@
 {% include "mainHead.html" %}
 
 {% block content %}
-{% for roadmap in roadmaps %}
-    
+
+<div class="container HelloText">
+    <div class="row">
+        <div class="col-4">
+            <h1 class="h1">
+                Все ваши цели ТУТ
+            </h1>
+            <p class="text-muted">
+                Структурируйте этапы, задачи и микро‑задачи. Делитесь read‑only ссылками, отслеживайте прогресс.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container glass-card">
+    <div class="row">
+        <div class="col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <h3>Новая роадмапа</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <p class="small">название новой цели</p>
+                        </div>
+                    </div>
+                        <form method="post" class="row">
+                            {% csrf_token %}
+                            <div class="col-11">
+                                
+                               
+                                {{ form.RoadmapTitle }}
+                            {% if form.RoadmapTitle.errors %}
+                                <div class="text-danger small">{{ form.RoadmapTitle.errors }}</div>
+                            {% endif %}
+                        
+                         
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" class="btn-primary">Создать</button>
+                        </div>
+                        </form>
+                        
+                        <div class="col-12">
+                            <hr>
+                        </div>
+            <div class="col-7">
+                <p class="text-secondary"> После создания вы сможете добавлять этапы, задачи и микро-подзадачи.</p>
+            </div>  
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div class="container UserRoadmapSet">
+
+        <div class="row">
+            {% for roadmap in roadmaps %}
+            <div class="col-4 RoadmapCard">
+                <div class=" container roadmap-card">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                {{roadmap.Title}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="progress">
+  <div class="progress-fill progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+</div>
+<div class="col-12">
+    <div style="font-size:0.7rem; color:#5b6e8c;">4 этапа · 14/18 задач · 42/56 микро</div>
+</div>
+<div class="description">
+<div style="font-size:0.8rem; color:#5b6e8c; " >FFFFFFFFffffffffffFFFFFFFFVVVVVVVVVVD</div>
+
+</div>
+
+<a href="{% url 'Roadmap' index=roadmap.id %}"><button class="btn-outline BTNcard" style="padding:0.3rem 1rem;"><i class="fas fa-eye"></i> Открыть</button></a> 
+                        <button class="btn-outline BTNcard" style="padding:0.3rem 1rem;"><i class="fas fa-link"></i> Read‑only</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+                
 {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}
+<style>
+.HelloText{
+    margin-top: 2vh;
+}
+.text-muted{
+    margin-top: 0.1vh;
+}
+.CreatedRoadmap{
+    margin-top: 10vh;
+}
+.glass-card{
+    margin-top: 3vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+
+}
+.UserRoadmapSet{
+    margin-top: 5vh;
+}
+.RoadmapCard{
+    margin-top: 2vh;
+}
+.description{
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+}
+.BTNcard{
+    margin-bottom: 2vh;
+}
+h4{
+    margin-top: 1vh;
+}
+</style>

@@ -1,7 +1,9 @@
 # forms.py
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import *
 
 class RegisterForm(forms.Form):
     username = forms.CharField(
@@ -48,3 +50,22 @@ class loginForm(forms.Form):
         widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
 
+class NewRoadmap(forms.Form):
+    RoadmapTitle = forms.CharField(
+        label="Например Выучить английский язык, подготовится к свадьбе",
+        max_length=150,
+        widget=forms.TextInput(attrs={
+            'class': 'input-modern',
+            'placeholder': "Например Выучить английский язык, подготовится к свадьбе"  # дублируем текст label
+        })
+    )
+class RoadmapDescription(ModelForm):
+    class Meta:
+        model = Roadmaps
+        fields = ['Description']
+        widgets = {                                 # ✅ widgets (множественное число)
+            'Description': forms.TextInput(attrs={
+                'class': 'input-modern',
+                'placeholder': "Вы еще не указали описание своей цели"
+            })
+        }

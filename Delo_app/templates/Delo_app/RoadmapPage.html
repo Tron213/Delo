@@ -1,0 +1,53 @@
+{% include "mainHead.html" %}
+
+{% block content %}
+
+<div class="container HeadofRoad glass-card">
+    <div class="row">
+        <div class="col-12">
+<h1 class="Title">{{ roadmap.Title }}</h1>
+
+        </div>
+        <div class="row Description">
+            <div class="col-12">
+                {%if roadmap.Description != false %}
+                <div class="col-6">
+                    <p>{{roadmap.Description}}</p>
+                </div>
+                {% elif roadmap.Description == false %}
+                    
+
+                    <form method="post" class="row" >
+                    <div class="col-11">
+                    {% csrf_token %}
+                    
+                    {{ form.Description }}
+                    </div>
+         
+                    <div class="col-1">
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                    </div>
+                    </form>
+{% endif %}
+
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .HeadofRoad{
+        margin-top: 4vh;
+    }
+
+.Description{
+    margin-bottom: 3vh;
+    margin-top: 3vh; 
+}
+.Title{
+    margin-top: 1vh;
+}
+</style>
+
+{% endblock %}
