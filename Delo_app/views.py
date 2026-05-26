@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, loginForm, NewRoadmap, RoadmapDescription
+from .forms import RegisterForm, loginForm, NewRoadmap, RoadmapDescription, StageTitle, RoadmapDate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -84,30 +84,61 @@ def custom_logout(request):
 def Roadmap(request, index):
     # Получаем объект Roadmaps по индексу из URL
     roadmap = get_object_or_404(Roadmaps, id=index)
+    stages = Stages.objects.filter(Roadmap=index)
+    
+    print("Количество этапов:", stages.count())
 
     # Проверяем, что текущий пользователь – владелец
     if request.user != roadmap.User:
-        # Можно вернуть 403 или показать сообщение об ошибке
-        return render(request, "Delo_app/RoadmapPage.html", {
-            'error': 'У вас нет прав для редактирования этого плана.',
-            'roadmap': roadmap,
-            'username': request.user.username,
-        })
+        return redirect(homePage)
 
     if request.method == 'POST':
         # Связываем форму с существующим объектом через instance
         form = RoadmapDescription(request.POST, instance=roadmap)
         if form.is_valid():
-            form.save()  # обновит поле Description у roadmap
-            # После успешного сохранения – редирект на эту же страницу (чтобы избежать повторной отправки формы)
+            form.save()  
             return redirect(request.path)
     else:
-        # GET-запрос: показываем форму, заполненную текущим описанием
+ 
         form = RoadmapDescription(instance=roadmap)
+        form2= StageTitle(instance=roadmap)
+        dateForm = RoadmapDate(instance=roadmap)
 
     context = {
         'username': request.user.username,
         'roadmap': roadmap,
         'form': form,
+        'stages':stages,
+        'form2':form2,
+        'dateForm':dateForm,
+        'index':index,
     }
     return render(request, "Delo_app/RoadmapPage.html", context)
+
+
+@login_required
+def addStage(request, index):
+    roadmap = get_object_or_404(Roadmaps, id=index)
+    
+    if roadmap.User != request.user:
+        return redirect('homePage')  
+    
+    if request.method == 'POST':  
+        form = StageTitle(request.POST)
+        if form.is_valid():
+            stage = form.save(commit=False)  
+            stage.Roadmap = roadmap
+            stage.save()  
+        return redirect('Roadmap', index=index)
+    
+    return redirect('Roadmap', index=index)
+
+@login_required
+def Delitroadmap(request, index):
+    roadmap = get_object_or_404(Roadmaps, id=index)
+    
+    if roadmap.User != request.user:
+        return redirect('homePage')  
+    instance = Roadmaps.objects.get(pk=index)
+    instance.delete()
+    return redirect('homePage') 

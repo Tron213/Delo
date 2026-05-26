@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path("home/", views.homePage, name="homePage"),
     path('roadmap/<int:index>/', views.Roadmap, name='Roadmap'),
-
+    path('roadmap/<int:index>/addStage', views.addStage, name='addStage'),
+    path('roadmap/<int:index>/DelitRoadmap', views.Delitroadmap, name='Delitroadmap'),
 ]

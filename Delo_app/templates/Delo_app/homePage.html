@@ -84,7 +84,14 @@
     <div style="font-size:0.7rem; color:#5b6e8c;">4 этапа · 14/18 задач · 42/56 микро</div>
 </div>
 <div class="description">
-<div style="font-size:0.8rem; color:#5b6e8c; " >FFFFFFFFffffffffffFFFFFFFFVVVVVVVVVVD</div>
+<div style="font-size:0.8rem; color:#5b6e8c; " >
+    {%if roadmap.Description != None %}
+        {{roadmap.Description}}
+    {% elif roadmap.Description == None %}
+        <p>Укажите описание вашей цели</p>
+    {%endif%}
+        
+</div>
 
 </div>
 

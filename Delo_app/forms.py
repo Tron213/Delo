@@ -56,16 +56,52 @@ class NewRoadmap(forms.Form):
         max_length=150,
         widget=forms.TextInput(attrs={
             'class': 'input-modern',
-            'placeholder': "Например Выучить английский язык, подготовится к свадьбе"  # дублируем текст label
+            'placeholder': "Например Выучить английский язык, подготовится к свадьбе" 
         })
     )
 class RoadmapDescription(ModelForm):
     class Meta:
         model = Roadmaps
         fields = ['Description']
-        widgets = {                                 # ✅ widgets (множественное число)
+        widgets = {                                 
             'Description': forms.TextInput(attrs={
                 'class': 'input-modern',
                 'placeholder': "Вы еще не указали описание своей цели"
             })
+        }
+class RoadmapDate(ModelForm):
+    class Meta:
+        model = Roadmaps
+        fields = ['goald_date']
+        {                                 
+            'goald_date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'input-modern'
+            }),}
+
+
+class StageTitle(ModelForm):
+    class Meta:
+        model = Stages
+        fields = ['Stagetitle','goald_date']
+        widgets = {                                 
+            'Stagetitle': forms.TextInput(attrs={
+                'class': 'input-modern',
+                'placeholder': "Добавьте этап для достижения своей цели"
+            }),
+            'goald_date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'input-modern'
+            }),
+        }
+class TaskTitle(ModelForm):
+    class Meta:
+        model = Tasks
+        fields = ['Tasktitle']
+        widgets = {                                 
+            'Stagetitle': forms.TextInput(attrs={
+                'class': 'input-modern',
+                'placeholder': "Добавьте задачу"
+            }),
+            
         }

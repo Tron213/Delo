@@ -14,6 +14,7 @@ class Roadmaps(models.Model):
     Title = models.CharField(max_length=35)
     Description = models.CharField(max_length=200, null=True)
     goald_date = models.DateField(null=True)
+    Badge=models.CharField(null=True,max_length=310)
     class Meta:
         ordering =['User','-id']
     def __str__(self):
@@ -23,7 +24,7 @@ class Roadmaps(models.Model):
 class Stages(models.Model):
     Roadmap = models.ForeignKey(Roadmaps, 
         on_delete=models.CASCADE)
-    Stagetitle = models.CharField(max_length=35)
+    Stagetitle = models.CharField(max_length=130)
     goald_date = models.DateField(null=True)
     status = models.CharField(null=True, max_length=35)
     progres = models.IntegerField(null=True, max_length=35)
