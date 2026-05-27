@@ -43,9 +43,11 @@ class Tasks(models.Model):
     def __str__(self):
         return str(f"рОАДМАПА № {self.Tasktitle} ")
 
+
+
 class Steps(models.Model):
     Task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
-    Steptitle = models.CharField(max_length=35)
+    Steptitle = models.CharField(max_length=67)
     status = models.CharField(null=True, max_length=35)
     class Meta:
         ordering =['Task', 'id']

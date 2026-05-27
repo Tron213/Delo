@@ -14,4 +14,9 @@ urlpatterns = [
     path('roadmap/<int:index>/', views.Roadmap, name='Roadmap'),
     path('roadmap/<int:index>/addStage', views.addStage, name='addStage'),
     path('roadmap/<int:index>/DelitRoadmap', views.Delitroadmap, name='Delitroadmap'),
+    path('roadmap/<int:index>/addRoadmapeDeadline', views.addRoadmapeDeadline, name='addRoadmapeDeadline'),
+    path('roadmap/<int:index>/stage/<int:stage_id>/add-task/', views.addTasks, name='addTasks'),
+    path('roadmap/<int:index>/Task/<int:Tasks_id>/add-step/', views.addSteps, name='addSteps'),
+    path('roadmap/<int:index>/stage/<int:Stage_id>/deleteStage/', views.deleteStage, name='deleteStage'),
+
 ]

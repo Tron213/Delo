@@ -73,7 +73,7 @@ class RoadmapDate(ModelForm):
     class Meta:
         model = Roadmaps
         fields = ['goald_date']
-        {                                 
+        widgets = {                                 
             'goald_date': forms.DateInput(attrs={
                 'type': 'date',
                 'class': 'input-modern'
@@ -99,9 +99,21 @@ class TaskTitle(ModelForm):
         model = Tasks
         fields = ['Tasktitle']
         widgets = {                                 
-            'Stagetitle': forms.TextInput(attrs={
+            'Tasktitle': forms.TextInput(attrs={
                 'class': 'input-modern',
                 'placeholder': "Добавьте задачу"
+            }),
+            
+        }
+
+class stepsTitle(ModelForm):
+    class Meta:
+        model = Steps
+        fields = ['Steptitle']
+        widgets = {                                 
+            'Steptitle': forms.TextInput(attrs={
+                'class': 'input-modern',
+                'placeholder': "новый шаг"
             }),
             
         }
